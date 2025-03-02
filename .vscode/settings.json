@@ -1,0 +1,15 @@
+{
+  "favorites.groups": ["Default", "HJ.com", "HTMLCSS-KURS", "lekitoner"],
+  "favorites.currentGroup": "lekitoner",
+  "favorites.sortOrder": "DESC",
+  "favorites.resources": [
+    {
+      "filePath": "index.html",
+      "group": "HJ.com"
+    },
+    {
+      "filePath": "style.css",
+      "group": "HJ.com"
+    }
+  ]
+}
