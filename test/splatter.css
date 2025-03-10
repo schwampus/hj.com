@@ -1,0 +1,32 @@
+body {
+	background-color: black;
+}
+.header-container {
+	position: relative;
+	height: 100vh; /* Adjust based on your needs */
+	overflow: hidden;
+}
+
+.effect-container {
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+
+.profile-image {
+	position: relative;
+	z-index: 2;
+	width: 600px; /* Match your image size */
+	height: auto;
+	pointer-events: none;
+}
+
+#particleCanvas {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1;
+	width: 1200px; /* Larger than image for spread */
+	height: 800px;
+}

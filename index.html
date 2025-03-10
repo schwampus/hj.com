@@ -8,52 +8,119 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
 			rel="stylesheet"
 		/>
-
 		<link
+			href="https://fonts.googleapis.com/css2?family=Barrio&display=swap"
 			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-			integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-			crossorigin="anonymous"
-			referrerpolicy="no-referrer"
 		/>
 	</head>
 	<body>
+		<span style="color: #f7f7f7"></span>
 		<!--Header section starts here-->
+		<nav>
+			<ul>
+				<li>
+					<a href="# "><span>P</span>rojects</a>
+				</li>
+				<li>
+					<a href="# "><span>A</span>bout</a>
+				</li>
+				<li>
+					<a href="# "><span>C</span>ontact</a>
+				</li>
+			</ul>
+		</nav>
 		<div class="hero">
-			<nav>
-				<ul>
-					<li><a href="# ">Home</a></li>
-					<li><a href="# ">About</a></li>
-					<li><a href="# ">Projects</a></li>
-					<li><a href="# ">Work</a></li>
-					<li><a href="# ">Contact</a></li>
-				</ul>
-				<!-- <a href="#" class="btn">Subscribe</a>  I don't like this button remove later -->
-			</nav>
 			<div class="content">
-				<h4>Hello, my name is</h4>
-				<h1>Hampus Jerkfelt</h1>
-				<h3>
-					<span class="tealText"
-						>I'm studying&lt;web&gt; &lt;/developement&gt;</span
+				<h1>Hampus</h1>
+				<h1>JERKFELT</h1>
+				<h3>an aspiring fullstack developer</h3>
+				<div class="h-buttons">
+					<a
+						href="public/Cv-HampusJerkfelt-2025.pdf"
+						download="Cv-HampusJerkfelt-2025.pdf"
+						><button>download cv</button></a
 					>
-				</h3>
-				<h3>
-					<span class="yellowText">Focusing on Javascript</span>
-				</h3>
-				<div class="newsletter"></div>
+					<a href="https://github.com/schwampus" target="_blank"
+						><button>my github</button></a
+					>
+				</div>
+			</div>
+			<div class="h-image">
+				<img id="heroImage" src="img/Hero.png" alt="" />
 			</div>
 		</div>
-		<!--About section starts here-->
+		<!--projects section starts here-->
+
+		<div class="projects">
+			<div class="title">
+				<h2>coding projects</h2>
+			</div>
+			<div class="box">
+				<div class="card">
+					<div class="card-thumb"></div>
+					<div class="card-text">
+						<h5>Is Bitcoin Up Today?</h5>
+						<p>
+							This is my first ever launched webapp. It turned out so good I
+							bought the domain straight away and made it a real site.
+						</p>
+						<p>
+							It started out as a school project. We had an assignment to code a
+							site using only HMTL,CSS and JS no frameworks aloud.
+						</p>
+						<p>
+							The main point of the project was to figure out how to fetch data
+							from an API and display it dynamically.
+						</p>
+
+						<p style="text-align: center">
+							<a href="https://github.com/schwampus" target="_blank"
+								><button>read more</button></a
+							>
+							<a href="https://isbitcoinuptoday.com" target="_blank"
+								><button>visit site</button></a
+							>
+						</p>
+					</div>
+				</div>
+
+				<div class="card">
+					<h5>Visuals</h5>
+					<div class="pra">
+						<p>
+							Photo, Video and Design stuff. a mix of agency work and some
+							freelance stuff.
+						</p>
+						<p style="text-align: center">
+							<a class="button" href="#">Read More</a>
+						</p>
+					</div>
+				</div>
+
+				<div class="card">
+					<h5>Aerial</h5>
+					<div class="pra">
+						<p>
+							I fly drones, small ones, big ones and really really fast ones. My
+							smallest one weighs 17 grams
+						</p>
+						<p style="text-align: center">
+							<a class="button" href="#">Read More</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<section class="about">
 			<div class="main">
 				<img src="img/me.png" />
 				<div class="about-text">
 					<h2>About me</h2>
-					<h5>started out as a designer, now im a coder</h5>
+					<h5>started out as a video editor, now i'm a coder</h5>
 					<p>
 						15 years ago I started my creative journey with gig posters for
 						friends and silly little edits in photoshop. I also got my first
@@ -77,57 +144,9 @@
 			</div>
 		</section>
 		<!--Projects section starts here-->
-		<div class="projects">
-			<div class="title">
-				<h2>My latest projects</h2>
-			</div>
-			<div class="box">
-				<div class="card">
-					<i class="fa-solid fa-laptop-code"></i>
-					<h5>&lt;Web Developement&gt;</h5>
-					<div class="pra">
-						<p>
-							Coding adventures. Big and small. I got some good ideas cooking.
-						</p>
-						<p style="text-align: center">
-							<a class="button" href="#">Read More </a>
-						</p>
-					</div>
-				</div>
-
-				<div class="card">
-					<i class="fa-solid fa-camera"></i>
-					<h5>Visuals</h5>
-					<div class="pra">
-						<p>
-							Photo, Video and Design stuff. a mix of agency work and some
-							freelance stuff.
-						</p>
-						<p style="text-align: center">
-							<a class="button" href="#">Read More</a>
-						</p>
-					</div>
-				</div>
-
-				<div class="card">
-					<i class="fa-solid fa-helicopter"></i>
-					<h5>Aerial</h5>
-					<div class="pra">
-						<p>
-							I fly drones, small ones, big ones and really really fast ones. My
-							smallest one weighs 17 grams
-						</p>
-						<p style="text-align: center">
-							<a class="button" href="#">Read More</a>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
 
 		<!--Contact section starts her but it should be some where else later one-->
 		<div class="contact">
-			<p>Let's get in touch and together fulfill your digital wishes.</p>
 			<a class="button-two" href="#">hire me</a>
 		</div>
 
