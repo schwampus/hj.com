@@ -188,7 +188,7 @@ margin-bottom: 14px;
 .about {
     width:100%;
     padding: 100px 0px ;
-    background-color: #2B2B2B;
+    background-color: #010101;
 
 }
 
@@ -327,6 +327,16 @@ padding-left: 18px;
 padding-right: 18px;
 padding-top: 18px;
 width: 50%;
+}
+.frameworkLogos{
+font-size: 2rem;
+display: inline;
+color:#C53A51;
+
+}
+.frameworkLogos img {
+    height:34px;
+    width: 34px;
 }
 
 
