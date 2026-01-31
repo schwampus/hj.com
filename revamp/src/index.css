@@ -2,16 +2,15 @@
 
 @theme {
 	/* Colors */
-	--color-darkest: #010101;
-	--color-shimmer: #c53a51;
-	--color-sand: #a38b5e;
+	--color-gray: #858585;
 	--color-darker: #252525;
-	--color-dark: #858585;
+	--color-darkest: #010101;
+	--color-sand: #a38b5e;
 	--color-salt: #f7f7f7;
+	--color-shimmer: #c53a51;
 
 	/* Fonts */
 	--font-family-display: "Barrio", sans-serif;
-	--font-family-heading: "Poppins", sans-serif;
 	--font-family-body: "Manrope", sans-serif;
 
 	/* Spacing */
@@ -19,6 +18,14 @@
 
 	/* Borders */
 	--radius-card: 1rem;
+}
+
+.font-display {
+	font-family: var(--font-family-display);
+}
+
+.font-body {
+	font-family: var(--font-family-body);
 }
 
 body {
