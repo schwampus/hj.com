@@ -1,7 +1,7 @@
 {
-  "name": "",
+  "name": "hj.com",
   "version": "1.0.0",
-  "description": "Website template for Payload",
+  "description": "Portfolio for Hampus Jerkfelt",
   "license": "MIT",
   "type": "module",
   "scripts": {
@@ -36,6 +36,7 @@
     "@payloadcms/plugin-search": "3.80.0",
     "@payloadcms/plugin-seo": "3.80.0",
     "@payloadcms/richtext-lexical": "3.80.0",
+    "@payloadcms/storage-vercel-blob": "^3.80.0",
     "@payloadcms/ui": "3.80.0",
     "@radix-ui/react-checkbox": "^1.0.4",
     "@radix-ui/react-label": "^2.0.2",
