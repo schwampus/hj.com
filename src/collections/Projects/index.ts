@@ -40,6 +40,7 @@ export const Projects: CollectionConfig<'projects'> = {
     slug: true,
     projectIntro: true,
     heroMedia: true,
+    thumbnail: true,
     meta: {
       image: true,
       description: true,
@@ -87,6 +88,15 @@ export const Projects: CollectionConfig<'projects'> = {
               label: 'Project Hero',
               type: 'upload',
               relationTo: 'media',
+            },
+            {
+              name: 'thumbnail',
+              label: 'Thumbnail (shown on project cards)',
+              type: 'upload',
+              relationTo: 'media',
+              filterOptions: {
+                mimeType: { contains: 'image' },
+              },
             },
             {
               name: 'projectIntro',

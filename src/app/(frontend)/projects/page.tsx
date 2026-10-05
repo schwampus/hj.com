@@ -1,5 +1,72 @@
-import PageTemplate, { generateMetadata } from './[slug]/page'
+import configPromise from '@payload-config'
+import { getPayload } from 'payload'
+import Link from 'next/link'
 
-export default PageTemplate
+import { Media } from '@/components/Media'
+import { getLabel, projectTypeOptions, techStackOptions } from '@/collections/Projects/options'
 
-export { generateMetadata }
+export default async function ProjectsPage() {
+  const payload = await getPayload({ config: configPromise })
+
+  const projects = await payload.find({
+    collection: 'projects',
+    depth: 1,
+    limit: 100,
+    overrideAccess: false,
+    sort: '-publishedAt ',
+    select: {
+      title: true,
+      slug: true,
+      projectIntro: true,
+      projectType: true,
+      techStack: true,
+      heroMedia: true,
+      thumbnail: true,
+    },
+  })
+
+  return (
+    <div className="container pt-24 pb-24">
+      <h1 className="text-4xl font-bold mb-8">My Different Projects</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projects.docs.map((project, index) => (
+          <div
+            key={project.id}
+            className="animate-in fade-in slide-in-from-bottom-8 duration-700 ease-out fill-mode-both motion-reduce:animate-none"
+            style={{ animationDelay: `${index * 100}ms` }}
+          >
+            <Link
+              key={project.id}
+              href={`/projects/${project.slug}`}
+              className="group flex flex-col overflow-hidden rounded-lg border border-border bg-card shadow-md transition hover:-translate-y-1 hover:shadow-xl"
+            >
+              <Media
+                resource={project.thumbnail || project.heroMedia}
+                imgClassName="aspect-square w-full object-cover"
+              />
+              <div className="flex flex-col gap-3 p-5">
+                <p className="text-xs uppercase tracking-wide text-muted-foreground">
+                  {project.projectType
+                    ?.map((type) => getLabel(projectTypeOptions, type))
+                    .join(' · ')}
+                </p>
+                <h2 className="text-xl font-bold">{project.title}</h2>
+                <p className="text-sm text-muted-foreground line-clamp-3">{project.projectIntro}</p>
+                <ul className="flex gap-2">
+                  {project.techStack?.map((tech) => (
+                    <li
+                      key={tech}
+                      className="rounded-full border border-border px-2.5 py-0.5 text-xs"
+                    >
+                      {getLabel(techStackOptions, tech)}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Link>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}

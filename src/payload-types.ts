@@ -781,6 +781,7 @@ export interface Project {
   title: string;
   projectType: ('web-app' | 'website' | 'mobile-app' | 'school' | 'client-work')[];
   heroMedia?: (number | null) | Media;
+  thumbnail?: (number | null) | Media;
   projectIntro?: string | null;
   techStack?:
     | (
@@ -1389,6 +1390,7 @@ export interface ProjectsSelect<T extends boolean = true> {
   title?: T;
   projectType?: T;
   heroMedia?: T;
+  thumbnail?: T;
   projectIntro?: T;
   techStack?: T;
   demoUrl?: T;
