@@ -14,7 +14,6 @@ import { Banner } from '../../blocks/Banner/config'
 import { Code } from '../../blocks/Code/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
-import { populateAuthors } from './hooks/populateAuthors'
 import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
 
 import {
@@ -35,9 +34,11 @@ export const Projects: CollectionConfig<'projects'> = {
     update: authenticated,
   },
   defaultPopulate: {
+    projectType: true,
     title: true,
     slug: true,
-    categories: true,
+    projectIntro: true,
+    heroMedia: true,
     meta: {
       image: true,
       description: true,
@@ -71,14 +72,69 @@ export const Projects: CollectionConfig<'projects'> = {
       type: 'tabs',
       tabs: [
         {
+          label: 'Overview',
           fields: [
             {
-              name: 'heroImage',
+              name: 'projectType',
+              type: 'select',
+              hasMany: true,
+              required: true,
+              options: [
+                { label: 'Web app', value: 'web-app' },
+                { label: 'Website', value: 'website' },
+                { label: 'Mobile app', value: 'mobile-app' },
+                { label: 'School project', value: 'school' },
+                { label: 'Client work', value: 'client' },
+              ],
+            },
+            {
+              name: 'heroMedia',
+              label: 'Project Hero',
               type: 'upload',
               relationTo: 'media',
             },
             {
-              name: 'content',
+              name: 'projectIntro',
+              label: 'Intro Text',
+              type: 'textarea',
+            },
+            {
+              name: 'techStack',
+              type: 'select',
+              hasMany: true,
+              options: [
+                { label: 'React', value: 'react' },
+                { label: 'JavaScript', value: 'javascript' },
+                { label: 'TypeScript', value: 'typescript' },
+                { label: 'MongoDB', value: 'mongodb' },
+                { label: 'MYSQL', value: 'mysql' },
+                { label: 'Postgres', value: 'postgres' },
+                { label: 'Docker', value: 'docker' },
+                { label: 'Svelte', value: 'svelte' },
+                { label: 'React Native', value: 'react-native' },
+              ],
+            },
+            {
+              name: 'demoUrl',
+              label: 'Demo link',
+              type: 'text',
+              validate: (value: string | null | undefined) =>
+                !value || /^https?:\/\//.test(value) || 'Must start with http:// or https://',
+            },
+            {
+              name: 'githubRepo',
+              label: 'Github Repo',
+              type: 'text',
+              validate: (value: string | null | undefined) =>
+                !value || /^https?:\/\//.test(value) || 'Must start with http:// or https://',
+            },
+          ],
+        },
+        {
+          label: 'Content',
+          fields: [
+            {
+              name: 'mainText',
               type: 'richText',
               editor: lexicalEditor({
                 features: ({ rootFeatures }) => {
@@ -92,42 +148,35 @@ export const Projects: CollectionConfig<'projects'> = {
                   ]
                 },
               }),
-              label: false,
+              label: 'Main Text',
               required: true,
             },
-          ],
-          label: 'Content',
-        },
-        {
-          fields: [
             {
-              name: 'relatedPosts',
-              type: 'relationship',
-              admin: {
-                position: 'sidebar',
-              },
-              filterOptions: ({ id }) => {
-                return {
-                  id: {
-                    not_in: [id],
-                  },
-                }
-              },
-              hasMany: true,
-              relationTo: 'projects',
+              name: 'reflectionText',
+              type: 'richText',
+              editor: lexicalEditor({
+                features: ({ rootFeatures }) => {
+                  return [
+                    ...rootFeatures,
+                    HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+                    FixedToolbarFeature(),
+                    InlineToolbarFeature(),
+                    HorizontalRuleFeature(),
+                  ]
+                },
+              }),
+              label: 'Reflections Text',
             },
             {
-              name: 'categories',
-              type: 'relationship',
-              admin: {
-                position: 'sidebar',
-              },
+              name: 'gallery',
+              label: 'Images & videos',
+              type: 'upload',
+              relationTo: 'media',
               hasMany: true,
-              relationTo: 'categories',
             },
           ],
-          label: 'Meta',
         },
+
         {
           name: 'meta',
           label: 'SEO',
@@ -157,6 +206,7 @@ export const Projects: CollectionConfig<'projects'> = {
         },
       ],
     },
+
     {
       name: 'publishedAt',
       type: 'date',
@@ -178,42 +228,26 @@ export const Projects: CollectionConfig<'projects'> = {
       },
     },
     {
-      name: 'authors',
+      name: 'relatedProjects',
       type: 'relationship',
       admin: {
         position: 'sidebar',
       },
+      filterOptions: ({ id }) => {
+        return {
+          id: {
+            not_in: [id],
+          },
+        }
+      },
       hasMany: true,
-      relationTo: 'users',
-    }, // This field is only used to populate the user data via the `populateAuthors` hook
-    // This is because the `user` collection has access control locked to protect user privacy
-    // GraphQL will also not return mutated user data that differs from the underlying schema
-    {
-      name: 'populatedAuthors',
-      type: 'array',
-      access: {
-        update: () => false,
-      },
-      admin: {
-        disabled: true,
-        readOnly: true,
-      },
-      fields: [
-        {
-          name: 'id',
-          type: 'text',
-        },
-        {
-          name: 'name',
-          type: 'text',
-        },
-      ],
+      relationTo: 'projects',
     },
+
     slugField(),
   ],
   hooks: {
     afterChange: [revalidatePost],
-    afterRead: [populateAuthors],
     afterDelete: [revalidateDelete],
   },
   versions: {

@@ -779,8 +779,25 @@ export interface Form {
 export interface Project {
   id: number;
   title: string;
-  heroImage?: (number | null) | Media;
-  content: {
+  projectType: ('web-app' | 'website' | 'mobile-app' | 'school' | 'client')[];
+  heroMedia?: (number | null) | Media;
+  projectIntro?: string | null;
+  techStack?:
+    | (
+        | 'react'
+        | 'javascript'
+        | 'typescript'
+        | 'mongodb'
+        | 'mysql'
+        | 'postgres'
+        | 'docker'
+        | 'svelte'
+        | 'react-native'
+      )[]
+    | null;
+  demoUrl?: string | null;
+  githubRepo?: string | null;
+  mainText: {
     root: {
       type: string;
       children: {
@@ -795,8 +812,22 @@ export interface Project {
     };
     [k: string]: unknown;
   };
-  relatedPosts?: (number | Project)[] | null;
-  categories?: (number | Category)[] | null;
+  reflectionText?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  gallery?: (number | Media)[] | null;
   meta?: {
     title?: string | null;
     /**
@@ -806,13 +837,7 @@ export interface Project {
     description?: string | null;
   };
   publishedAt?: string | null;
-  authors?: (number | User)[] | null;
-  populatedAuthors?:
-    | {
-        id?: string | null;
-        name?: string | null;
-      }[]
-    | null;
+  relatedProjects?: (number | Project)[] | null;
   /**
    * When enabled, the slug will auto-generate from the title field on save and autosave.
    */
@@ -1360,10 +1385,15 @@ export interface UsersSelect<T extends boolean = true> {
  */
 export interface ProjectsSelect<T extends boolean = true> {
   title?: T;
-  heroImage?: T;
-  content?: T;
-  relatedPosts?: T;
-  categories?: T;
+  projectType?: T;
+  heroMedia?: T;
+  projectIntro?: T;
+  techStack?: T;
+  demoUrl?: T;
+  githubRepo?: T;
+  mainText?: T;
+  reflectionText?: T;
+  gallery?: T;
   meta?:
     | T
     | {
@@ -1372,13 +1402,7 @@ export interface ProjectsSelect<T extends boolean = true> {
         description?: T;
       };
   publishedAt?: T;
-  authors?: T;
-  populatedAuthors?:
-    | T
-    | {
-        id?: T;
-        name?: T;
-      };
+  relatedProjects?: T;
   generateSlug?: T;
   slug?: T;
   updatedAt?: T;

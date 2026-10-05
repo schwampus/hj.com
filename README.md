@@ -1,7 +1,7 @@
 # My "advanced" portfolio.
 
 Being a recent graduate and junior developer I don't have tonnes of projects to show in my portfolio,
-so I decided to make my portfolio advanced enough to be its own project to showcase.
+so I decided to make my portfolio advanced enough to be considered its own project to showcase.
 
 All content delivered and displayed on this page is stored in a Headless CMS running Payload.
 
