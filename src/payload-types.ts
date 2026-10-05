@@ -779,7 +779,7 @@ export interface Form {
 export interface Project {
   id: number;
   title: string;
-  projectType: ('web-app' | 'website' | 'mobile-app' | 'school' | 'client')[];
+  projectType: ('web-app' | 'website' | 'mobile-app' | 'school' | 'client-work')[];
   heroMedia?: (number | null) | Media;
   projectIntro?: string | null;
   techStack?:
@@ -787,11 +787,13 @@ export interface Project {
         | 'react'
         | 'javascript'
         | 'typescript'
-        | 'mongodb'
+        | 'ongodb'
         | 'mysql'
         | 'postgres'
         | 'docker'
         | 'svelte'
+        | 'vue'
+        | 'vite'
         | 'react-native'
       )[]
     | null;

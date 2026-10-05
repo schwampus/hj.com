@@ -24,6 +24,7 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 import { slugField } from 'payload'
+import { projectTypeOptions, techStackOptions } from './options'
 
 export const Projects: CollectionConfig<'projects'> = {
   slug: 'projects',
@@ -79,13 +80,7 @@ export const Projects: CollectionConfig<'projects'> = {
               type: 'select',
               hasMany: true,
               required: true,
-              options: [
-                { label: 'Web app', value: 'web-app' },
-                { label: 'Website', value: 'website' },
-                { label: 'Mobile app', value: 'mobile-app' },
-                { label: 'School project', value: 'school' },
-                { label: 'Client work', value: 'client' },
-              ],
+              options: projectTypeOptions,
             },
             {
               name: 'heroMedia',
@@ -102,17 +97,7 @@ export const Projects: CollectionConfig<'projects'> = {
               name: 'techStack',
               type: 'select',
               hasMany: true,
-              options: [
-                { label: 'React', value: 'react' },
-                { label: 'JavaScript', value: 'javascript' },
-                { label: 'TypeScript', value: 'typescript' },
-                { label: 'MongoDB', value: 'mongodb' },
-                { label: 'MYSQL', value: 'mysql' },
-                { label: 'Postgres', value: 'postgres' },
-                { label: 'Docker', value: 'docker' },
-                { label: 'Svelte', value: 'svelte' },
-                { label: 'React Native', value: 'react-native' },
-              ],
+              options: techStackOptions,
             },
             {
               name: 'demoUrl',
