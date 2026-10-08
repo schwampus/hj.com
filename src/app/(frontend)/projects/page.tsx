@@ -3,6 +3,8 @@ import { getPayload } from 'payload'
 import Link from 'next/link'
 
 import { Media } from '@/components/Media'
+import { Button } from '@/components/ui/button'
+
 import { getLabel, projectTypeOptions, techStackOptions } from '@/collections/Projects/options'
 
 export default async function ProjectsPage() {
@@ -22,6 +24,7 @@ export default async function ProjectsPage() {
       techStack: true,
       heroMedia: true,
       thumbnail: true,
+      demoUrl: true,
     },
   })
 
@@ -35,24 +38,31 @@ export default async function ProjectsPage() {
             className="animate-in fade-in slide-in-from-bottom-8 duration-700 ease-out fill-mode-both motion-reduce:animate-none"
             style={{ animationDelay: `${index * 100}ms` }}
           >
-            <Link
+            <article
               key={project.id}
-              href={`/projects/${project.slug}`}
-              className="group flex flex-col overflow-hidden rounded-lg border border-border bg-card shadow-md transition hover:-translate-y-1 hover:shadow-xl"
+              className="group flex flex-col overflow-hidden h-full rounded-lg border border-border bg-card shadow-md transition hover:-translate-y-1 hover:shadow-xl"
             >
-              <Media
-                resource={project.thumbnail || project.heroMedia}
-                imgClassName="aspect-square w-full object-cover"
-              />
-              <div className="flex flex-col gap-3 p-5">
+              <Link href={`/projects/${project.slug}`}>
+                <Media
+                  resource={project.thumbnail || project.heroMedia}
+                  imgClassName="aspect-square w-full object-cover"
+                />
+              </Link>
+              <div className="flex flex-col flex-1 p-5">
                 <p className="text-xs uppercase tracking-wide text-muted-foreground">
                   {project.projectType
                     ?.map((type) => getLabel(projectTypeOptions, type))
                     .join(' · ')}
                 </p>
-                <h2 className="text-xl font-bold">{project.title}</h2>
-                <p className="text-sm text-muted-foreground line-clamp-3">{project.projectIntro}</p>
-                <ul className="flex gap-2">
+                <div className="mt-1 flex items-start justify-between gap-3">
+                  <h2 className="text-xl font-bold leading-tight">
+                    <Link href={`/projects/${project.slug}`}>{project.title}</Link>
+                  </h2>
+                </div>
+                <p className="text-sm mt-2 text-muted-foreground line-clamp-3">
+                  {project.projectIntro}
+                </p>
+                <ul className="flex mt-4 flex-wrap gap-1.5">
                   {project.techStack?.map((tech) => (
                     <li
                       key={tech}
@@ -62,8 +72,25 @@ export default async function ProjectsPage() {
                     </li>
                   ))}
                 </ul>
+                <div className="mt-auto flex gap-6 pt-4 ">
+                  <Button asChild size="sm">
+                    <Link href={`/projects/${project.slug}`}>Read more</Link>
+                  </Button>
+                  {project.demoUrl && (
+                    <Button variant="outline">
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className=" text-muted-foreground hover:text-foreground"
+                      >
+                        Live demo ↗
+                      </a>
+                    </Button>
+                  )}
+                </div>
               </div>
-            </Link>
+            </article>
           </div>
         ))}
       </div>

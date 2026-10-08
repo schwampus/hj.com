@@ -3,7 +3,9 @@ export const projectTypeOptions = [
   { label: 'Website', value: 'website' },
   { label: 'Mobile app', value: 'mobile-app' },
   { label: 'School project', value: 'school' },
-  { label: 'Client work', value: 'client-work' },
+  { label: 'Client Work', value: 'client-work' },
+  { label: 'Video Production', value: 'video-production' },
+  { label: 'Freelance', value: 'freelance' },
 ]
 
 export const techStackOptions = [
@@ -18,6 +20,10 @@ export const techStackOptions = [
   { label: 'Vue', value: 'vue' },
   { label: 'Vite', value: 'vite' },
   { label: 'React Native', value: 'react-native' },
+  { label: 'Editing', value: 'editing' },
+  { label: 'Filming', value: 'filming' },
+  { label: 'Drone Flying', value: 'drone-flying' },
+  { label: 'Team Management', value: 'team-managment' },
 ]
 
 export const getLabel = (options: { label: string; value: string }[], value: string) =>

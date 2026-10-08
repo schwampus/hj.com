@@ -779,7 +779,7 @@ export interface Form {
 export interface Project {
   id: number;
   title: string;
-  projectType: ('web-app' | 'website' | 'mobile-app' | 'school' | 'client-work')[];
+  projectType: ('web-app' | 'website' | 'mobile-app' | 'school' | 'client-work' | 'video-production' | 'freelance')[];
   heroMedia?: (number | null) | Media;
   thumbnail?: (number | null) | Media;
   projectIntro?: string | null;
@@ -796,6 +796,10 @@ export interface Project {
         | 'vue'
         | 'vite'
         | 'react-native'
+        | 'editing'
+        | 'filming'
+        | 'drone-flying'
+        | 'team-managment'
       )[]
     | null;
   demoUrl?: string | null;
