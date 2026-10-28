@@ -6,6 +6,7 @@ import { fileURLToPath } from 'url'
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
 import { redirectsPlugin } from '@payloadcms/plugin-redirects'
+import { SITE_NAME } from '@/utilities/siteConfig'
 
 import { Categories } from './collections/Categories'
 import { Media } from './collections/Media'
@@ -25,6 +26,16 @@ const dirname = path.dirname(filename)
 
 export default buildConfig({
   admin: {
+    meta: {
+      titleSuffix: `– Dashboard`,
+      icons: [{ rel: 'icon', type: 'image/svg+xml', url: '/favicon.svg' }],
+    },
+    components: {
+      graphics: {
+        Logo: '/components/Logo/Logo#Logo',
+        Icon: '/components/Logo/Logo#AdminIcon',
+      },
+    },
     importMap: {
       baseDir: path.resolve(dirname),
     },

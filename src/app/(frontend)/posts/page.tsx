@@ -8,6 +8,7 @@ import { getPayload } from 'payload'
 import React from 'react'
 import PageClient from './page.client'
 import { getData } from '@/lib/db'
+import { SITE_NAME } from '@/utilities/siteConfig'
 
 export async function GET() {
   const posts = await getData()
@@ -64,6 +65,6 @@ export default async function Page() {
 
 export function generateMetadata(): Metadata {
   return {
-    title: `Payload Website Template Posts`,
+    title: SITE_NAME,
   }
 }

@@ -27,3 +27,8 @@ export const Logo = (props: Props) => {
     />
   )
 }
+
+export const AdminIcon = () => (
+  // eslint-disable-next-line @next/next/no-img-element
+  <img src="/favicon.svg" alt="Admin" width={24} height={24} />
+)

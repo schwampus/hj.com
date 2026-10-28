@@ -1,6 +1,7 @@
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import Link from 'next/link'
+import { SITE_NAME } from '@/utilities/siteConfig'
 
 import { Media } from '@/components/Media'
 import { Button } from '@/components/ui/button'
@@ -96,4 +97,8 @@ export default async function ProjectsPage() {
       </div>
     </div>
   )
+}
+
+export const metadata = {
+  title: `${SITE_NAME} | Projects `,
 }
